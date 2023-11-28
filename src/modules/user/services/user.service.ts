@@ -122,7 +122,7 @@ export class UserService {
       }
     }
 
-    // Fetch total daily calories for the family
+    // Fetch total daily calories for the  family
     const family = await this.prisma.family.findUnique({
       where: { id: familyId },
     });
