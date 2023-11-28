@@ -1,0 +1,39 @@
+scalar JSON
+scalar BigInt
+scalar DateTime
+
+type AuthPayload {
+  token: String!
+  refreshToken: String!
+  user: User!
+}
+
+type RefreshPayload {
+  accessToken: String!
+  refreshToken: String!
+  user: User!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+  gender: UserGender
+  birthdate: String
+}
+
+input AuthenticateInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  signup(input: SignupInput!): AuthPayload!
+  login(input: AuthenticateInput!): AuthPayload!
+  forgotPassword(email: String!): Response!
+  resetPassword(token: String!, newPassword: String!): Response!
+  verifyEmail(token: String!): MessageResponse!
+  refreshToken(refreshToken: String!): RefreshPayload!
+  logout: MessageResponse!
+}
